@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre con Carta</title>
+  <style>
+    body {
+      background-color: #fdf6e3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .image-container {
+      position: absolute;
+      top: 30px; 
+      z-index: 10;
+      transition: opacity 0.5s ease; /* Agregar transición para hacer que desaparezca suavemente */
+    }
+
+    .image-container img {
+      width: 300px; 
+      height: auto;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      cursor: pointer;
+      perspective: 1000px;
+      transition: all 0.8s ease;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      background: #d94f4f;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #c0392b;
+      clip-path: polygon(0 0, 50% 60%, 100% 0, 100% 100%, 0 100%);
+      transform-origin: top;
+      transition: transform 0.6s ease;
+      z-index: 2;
+    }
+
+    .card {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      transition: all 0.8s ease;
+      z-index: 1;
+    }
+
+    .container.open .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .container.open {
+      width: 90vw;
+      height: 90vh;
+    }
+
+    .container.open .card {
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      font-size: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 40px;
+      z-index: 3;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #c0392b;
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="image-container" id="image-container">
+    <img src="puzzle.jpg" alt="Imagen" /> 
+  </div>
+
+  <div class="container" id="envelope">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="card">
+       
+        <p>Bueno, no tengo claro cómo empezar, nunca se me dieron bien este tipo de cosas…así que simplemente escribiré lo que siento, creo que es la mejor forma de reflejar mis sentimientos. Hoy es un día muy importante, hace 19 años ocurrió algo muy especial, una persona increíble llegó a este mundo.
+          Su nombre fue Andrea, sin duda un nombre que recordaré toda la vida, y que cada vez que escuche lo primero y único que se me vendrá a la cabeza serás tú. Ese es el impacto que has tenido y tienes en mi día a día. <br>
+          La verdad estoy muy agradecido con Dios, nunca he sido muy creyente pero si realmente existe uno se que te ha enviado a mi por un motivo, eres la luz que ilumina mis días, eres lo que me da fuerzas para no rendirme a diario y el motivo por el que pienso que aún existen personas que de verdad merecen la pena conocer.
+          Sinceramente nunca pensé que llegaríamos a tanto, todo esto empezó porque tenía ganas de leer un buen libro, sin saberlo encontré al amor de mi vida, sin buscarlo, las cosas se dieron porque debían darse de esa manera. <br>
+          Creo que eso es lo que más me gusta de lo que hemos construido, de lo que estamos construyendo, sin forzar las cosas , nos amamos con locura. Nunca he sentido este tipo de cosas por alguien más, nunca a este nivel, tengo ganas de verte todo el rato, de estar contigo, escuchar tu voz y reírnos juntos. <br>
+          
+          <br> Hago memoria y solo tengo recuerdos increíbles a tu lado, me emociono solo de pensar en lo que nos depara el futuro. La verdad solo tengo palabras de agradecimiento para ti, gracias por las risas , los buenos momentos, los besos , los abrazos y todo el amor y comprensión que me has dado durante todo este tiempo que llevamos juntos.
+          
+          <br>Eres la mejor persona que he conocido y me encantaría poder celebrar nuestros próximos cumpleaños el uno junto al otro , quiero compartir todo lo bonito de este mundo contigo.
+          
+          <br>Espero que hoy tengas un día increíble, rodeada de personas que te quieran, espero que se cumplan todos tus deseos y que la felicidad y el amor nunca falten en tu vida , sobre todo el mío , que ya es todo tuyo.
+          
+         <br> Te amo, hoy y siempre.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const imageContainer = document.getElementById('image-container');
+
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('open');
+      // Desaparece la imagen cuando se hace clic en el sobre
+      imageContainer.style.opacity = imageContainer.style.opacity === '0' ? '1' : '0';
+    });
+  </script>
+
+</body>
+</html>
